@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { sendEmail } from '../utils/send-email';
+
+await sendEmail({
+  to: 'Testy <test@example.com>',
+  subject: 'Cookie Bug Email',
+  html: `<a href="${Astro.url.origin}/set-cookie">${Astro.url.origin}/set-cookie</a>`,
+});
+---
+
+<Layout>
+  <p>
+    If email was successfully sent, there will be a preview URL in the console. Go to that URL in a
+    new window.
+  </p>
+</Layout>

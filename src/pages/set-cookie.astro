@@ -1,0 +1,10 @@
+---
+Astro.cookies.set('test-cookie', 'Cookie is Set', {
+  path: '/',
+  maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+  secure: true,
+  httpOnly: true,
+  sameSite: 'strict',
+});
+return Astro.redirect('/');
+---

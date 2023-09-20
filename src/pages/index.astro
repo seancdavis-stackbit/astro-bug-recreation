@@ -1,16 +1,31 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+const cookie = Astro.cookies.get('test-cookie');
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <div class="mb-6">
+    <h1 class="text-3xl font-bold">Astro - Cookie Bug Recreation</h1>
+    <p class="text-gray-500">
+      This is a recreation of a bug I found in Astro. See README for details.
+    </p>
+  </div>
+  <div class="mb-6">
+    <p>
+      Cookie value: <code class="inline-block text-sm rounded-md bg-slate-200 p-1">
+        {cookie?.value || '(not set)'}
+      </code>
+    </p>
+  </div>
+  <div class="flex gap-4">
+    <a class="button" href="/set-cookie">Set Cookie Manually</a>
+    <a class="button" href="/delete-cookie">Delete Cookie</a>
+    <a class="button" href="/send-email">Send Email (Recreate Bug)</a>
+  </div>
+</Layout>
+
+<style>
+  .button {
+    @apply inline-block px-4 py-2 rounded-md bg-slate-200 text-slate-900 hover:bg-slate-300 transition-colors;
+  }
+</style>
